@@ -10,7 +10,6 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.button import Button
 from kivy.animation import Animation
 from sympy import symbols, sympify, diff
-from math import log
 simpsonxlist, simpsonylist = [], []
 
 
