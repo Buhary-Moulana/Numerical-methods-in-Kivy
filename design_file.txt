@@ -1,0 +1,1688 @@
+WindowManager:
+    FirstWindow:
+    NRWindow:
+    GJWindow:
+    SimpsonWindow:
+    SimpsonWindow2:
+    RKWindow:
+<FirstWindow>:
+    name:"first"
+    FloatLayout:
+        size:root.width,root.height
+        id:mylayout1
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            text:"Numerical Methods"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.4, 'y': 0.95}
+        Button:
+            text:"Newton-Raphson Method"
+            size_hint:(None,None)
+            width:250
+            height:50
+            pos_hint:{"x":0.2,"y":0.8}
+            on_press:
+                app.root.current="nr"
+                root.manager.transition.direction="left"
+        Button:
+            text:"Gauss Jacobi Method"
+            size_hint:(None,None)
+            width:200
+            height:50
+            pos_hint:{"x":0.6,"y":0.8}
+            on_press:
+                app.root.current="gj"
+                root.manager.transition.direction="left"
+        Button:
+            text:"Simpson's 1/3rd rule "
+            size_hint:(None,None)
+            width:200
+            height:50
+            pos_hint:{"x":0.2,"y":0.3}
+            on_press:
+                app.root.current="simpson"
+                root.manager.transition.direction="left"
+        Button:
+            text:"Runge Kutta 4th Order Method"
+            size_hint:(None,None)
+            width:280
+            height:50
+            pos_hint:{"x":0.6,"y":0.3}
+            on_press:
+                app.root.current="rk"
+                root.manager.transition.direction="left"
+        Button:
+            text:"Exit"
+            size_hint:(None,None)
+            width:200
+            height:50
+            pos_hint:{"x":0.01,"y":0.05}
+            on_press:
+                app.stop()
+
+<NRWindow>:
+    name:"nr"
+    FloatLayout:
+        size:root.width,root.height
+        id:mylayout2
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            text:"Newton Raphson Method"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.4, 'y': 0.95}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:mylabel
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            text:"Enter the function here : "
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.275, 'y': 0.85}
+        TextInput:
+            id:nrinput
+            size_hint:(None,None)
+            hint_text:"Enter here"
+            width:150
+            height:30
+            pos_hint: {'x': 0.45, 'y': 0.845}
+        Button:
+            text:"Back"
+            size_hint:(None,None)
+            width:200
+            height:50
+            pos_hint:{"x":0.01,"y":0.05}
+            on_press:
+                app.root.current="first"
+                root.manager.transition.direction="right"
+        Image:
+            id:nrimage
+            source:""
+            size_hint:(None,None)
+            width:1000
+            keep_ratio:True
+            pos_hint: {'x': 0.15, 'y': 0.69}
+        
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:nrlabel1
+            color:(1,1,1,1)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.32, 'y': 0.65}
+
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:nrlabel2
+            color:(1,1,1,1)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.4, 'y': 0.60}  
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:nrlabel3
+            color:(1,1,1,1)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.4, 'y': 0.55}  
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:nrlabel4
+            color:(1,1,1,1)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.4, 'y': 0.50}  
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:nrlabel5
+            color:(1,1,1,1)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.4, 'y': 0.45}  
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:nrlabel6
+            color:(1,1,1,1)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.4, 'y': 0.4}  
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:nrlabel7
+            color:(1,1,1,1)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.4, 'y': 0.35} 
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:nrlabelfinal
+            color:(1,1,1,1)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.367, 'y': 0.25}  
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:nrlabelroot1
+            color:(1,1,1,1)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.75, 'y': 0.85}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:nrlabelroot2
+            color:(1,1,1,1)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.75, 'y': 0.80}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:nrlabelroot3
+            color:(1,1,1,1)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.65, 'y': 0.75}  
+        Button:
+            id:nrclear
+            text:"Clear"
+            size_hint:(None,None)
+            width:55
+            height:30
+            pos_hint:{"x":0.65,"y":0.845}
+            background_color:(1,1,1,1)
+            background_normal:''
+            color:(1,1,1,1)
+            on_press:
+                root.nrfunction2()  
+        Button:
+            text:"Submit"
+            size_hint:(None,None)
+            width:65
+            height:30
+            pos_hint:{"x":0.580,"y":0.845}
+            background_color:(17/255, 240/255, 28/255)
+            background_normal:''
+            on_press:
+                root.nrfunction()
+            
+<GJWindow>:
+    name:"gj"
+    FloatLayout:
+        size:root.width,root.height
+        id:gjmainlabel
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            text:"Gauss Jacobi Method"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.4, 'y': 0.95}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(3/255, 144/255, 252/255)
+            background_color:(1,1,1,1)
+            id:gjlabel1
+            text:"Let the three equations be : "
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.19, 'y': 0.87}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0/255, 194/255, 87/255)
+            background_color:(1,1,1,1)
+            id:gjlabel2
+            text:"a1x + b1y + c1z = d1"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.4, 'y': 0.85}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0/255, 194/255, 87/255)
+            background_color:(1,1,1,1)
+            id:gjlabel3
+            text:"a2x + b2y + c2z = d2"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.4, 'y': 0.79}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0/255, 194/255, 87/255)
+            background_color:(1,1,1,1)
+            id:gjlabel4
+            text:"a3x + b3y + c3z = d3"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.4, 'y': 0.73}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            id:gja1label
+            text:"a1 :"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.2, 'y': 0.63}
+        TextInput:
+            id:gja1input
+            size_hint:(None,None)
+            hint_text:""
+            width:40
+            height:30
+            pos_hint: {'x': 0.24, 'y': 0.63}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            id:gjb1label
+            text:"b1 :"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.34, 'y': 0.63}
+        TextInput:
+            id:gjb1input
+            size_hint:(None,None)
+            hint_text:""
+            width:40
+            height:30
+            pos_hint: {'x': 0.38, 'y': 0.63}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            id:gjc1label
+            text:"c1 :"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.48, 'y': 0.63}
+        TextInput:
+            id:gjc1input
+            size_hint:(None,None)
+            hint_text:""
+            width:40
+            height:30
+            pos_hint: {'x': 0.52, 'y': 0.63}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            id:gjd1label
+            text:"d1 :"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.62, 'y': 0.63}
+        TextInput:
+            id:gjd1input
+            size_hint:(None,None)
+            hint_text:""
+            width:40
+            height:30
+            pos_hint: {'x': 0.66, 'y': 0.63}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            id:gja2label
+            text:"a2 :"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.2, 'y': 0.53}
+        TextInput:
+            id:gja2input
+            size_hint:(None,None)
+            hint_text:""
+            width:40
+            height:30
+            pos_hint: {'x': 0.24, 'y': 0.53}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            id:gjb2label
+            text:"b2 :"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.34, 'y': 0.53}
+        TextInput:
+            id:gjb2input
+            size_hint:(None,None)
+            hint_text:""
+            width:40
+            height:30
+            pos_hint: {'x': 0.38, 'y': 0.53}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            id:gjc2label
+            text:"c2 :"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.48, 'y': 0.53}
+        TextInput:
+            id:gjc2input
+            size_hint:(None,None)
+            hint_text:""
+            width:40
+            height:30
+            pos_hint: {'x': 0.52, 'y': 0.53}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            id:gjd2label
+            text:"d2 :"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.62, 'y': 0.53}
+        TextInput:
+            id:gjd2input
+            size_hint:(None,None)
+            hint_text:""
+            width:40
+            height:30
+            pos_hint: {'x': 0.66, 'y': 0.53}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            id:gja3label
+            text:"a3 :"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.2, 'y': 0.43}
+        TextInput:
+            id:gja3input
+            size_hint:(None,None)
+            hint_text:""
+            width:40
+            height:30
+            pos_hint: {'x': 0.24, 'y': 0.43}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            id:gjb3label
+            text:"b3 :"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.34, 'y': 0.43}
+        TextInput:
+            id:gjb3input
+            size_hint:(None,None)
+            hint_text:""
+            width:40
+            height:30
+            pos_hint: {'x': 0.38, 'y': 0.43}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            id:gjc3label
+            text:"c3 :"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.48, 'y': 0.43}
+        TextInput:
+            id:gjc3input
+            size_hint:(None,None)
+            hint_text:""
+            width:40
+            height:30
+            pos_hint: {'x': 0.52, 'y': 0.43}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            id:gjd3label
+            text:"d3 :"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.62, 'y': 0.43}
+        TextInput:
+            id:gjd3input
+            size_hint:(None,None)
+            hint_text:""
+            width:40
+            height:30
+            pos_hint: {'x': 0.66, 'y': 0.43}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(255/255, 37/255, 25/255)
+            background_color:(1,1,1,1)
+            id:gjnotelabel
+            text:"Note:(The Equations need to be in diagonally dominant form)"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.62, 'y': 0.83}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            id:gjresultlabel1
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.25, 'y': 0.8}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            id:gjresultlabel2
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.25, 'y': 0.75}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            id:gjresultlabel3
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.25, 'y': 0.7}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            id:gjresultlabel4
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.25, 'y': 0.65}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            id:gjresultlabel5
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.25, 'y': 0.6}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            id:gjresultlabel6
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.25, 'y': 0.55}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            id:gjresultlabel7
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.25, 'y': 0.5}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            id:gjresultlabel8
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.25, 'y': 0.45}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            id:gjresultlabel9
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.25, 'y': 0.4}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            id:gjresultlabel10
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.25, 'y': 0.35}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(33/255, 219/255, 20/255)
+            background_color:(1,1,1,1)
+            id:gjresultlabelfinal1
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.220, 'y': 0.25}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(33/255, 219/255, 20/255)
+            background_color:(1,1,1,1)
+            id:gjresultlabelfinal2
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.26, 'y': 0.15}
+        Button:
+            id:gjclear
+            text:"Clear"
+            size_hint:(None,None)
+            width:55
+            height:30
+            pos_hint:{"x":0.8,"y":0.2}
+            background_color:(1,1,1,1)
+            background_normal:''
+            color:(1,1,1,1)
+            on_press:
+                root.gjfunction2()  
+        Button:
+            text:"Submit"
+            id:gjsubmit
+            size_hint:(None,None)
+            width:65
+            height:30
+            background_color:(30/255, 214/255, 58/255)
+            background_normal:''
+            pos_hint:{"x":0.60,"y":0.30}
+            on_press:
+                root.gjfunction()
+        Button:
+            text:"Back"
+            size_hint:(None,None)
+            width:200
+            height:50
+            pos_hint:{"x":0.01,"y":0.05}
+            on_press:
+                app.root.current="first"
+                root.manager.transition.direction="right"
+
+<SimpsonWindow>:
+    name:"simpson"
+    FloatLayout:
+        size:root.width,root.height
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            text:"Simpson's 1/3rd Rule"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.4, 'y': 0.95} 
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:simpsonfunctionlabel
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            text:"Enter the function here : "
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.275, 'y': 0.85}
+        TextInput:
+            id:simpsonfunctioninput
+            size_hint:(None,None)
+            hint_text:"Enter here"
+            width:150
+            height:30
+            pos_hint: {'x': 0.45, 'y': 0.845}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:simpsonintervallabel
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            text:"Enter the number of intervals : "
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.275, 'y': 0.75}
+        TextInput:
+            id:simpsonintervalinput
+            size_hint:(None,None)
+            hint_text:""
+            width:40
+            height:30
+            pos_hint: {'x': 0.46, 'y': 0.745}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:simpsonlowerlimitlabel
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            text:"Lower limit : "
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.275, 'y': 0.68}
+        TextInput:
+            id:simpsonlowerlimitinput
+            size_hint:(None,None)
+            hint_text:""
+            width:40
+            height:30
+            pos_hint: {'x': 0.36, 'y': 0.675}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:simpsonupperlimitlabel
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            text:"Upper limit : "
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.4, 'y': 0.68}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:simpson1resultlabel1
+            color:(39/255, 207/255, 204/255)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.15, 'y': 0.55}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:simpson1resultlabel2
+            color:(39/255, 207/255, 204/255)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.375, 'y': 0.50}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:simpson1resultlabel3
+            color:(39/255, 207/255, 204/255)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.375, 'y': 0.45}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:simpson1resultlabel4
+            color:(39/255, 207/255, 204/255)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.415, 'y': 0.40}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:simpson1resultlabel5
+            color:(39/255, 207/255, 204/255)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.415, 'y': 0.35}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:simpson1resultlabel6
+            color:(39/255, 207/255, 204/255)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.3, 'y': 0.30}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:simpson1resultlabel7
+            color:(29/255, 219/255, 95/255)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.3, 'y': 0.20}
+        TextInput:
+            id:simpsonupperlimitinput
+            size_hint:(None,None)
+            hint_text:""
+            width:40
+            height:30
+            pos_hint: {'x': 0.485, 'y': 0.675}
+        Button:
+            id:simpsonswitch1
+            text:"Function not given"
+            size_hint:(None,None)
+            width:160
+            height:40
+            background_color:(30/255, 235/255, 37/255)
+            background_normal:''
+            pos_hint:{"x":0.15,"y":0.84}
+            on_press:
+                app.root.current="simpson2"
+                root.manager.transition.direction="left"
+        Button:
+            id:simpsonfunctionsubmit
+            text:"Submit"
+            size_hint:(None,None)
+            width:65
+            height:40
+            background_color:(30/255, 235/255, 37/255)
+            background_normal:''
+            pos_hint:{"x":0.58,"y":0.84}
+            on_press:root.simpsonfunctionsubmit()
+        Button:
+            id:simpsonclear
+            text:"Clear"
+            size_hint:(None,None)
+            width:55
+            height:30
+            pos_hint:{"x":0.65,"y":0.845}
+            background_color:(1,1,1,1)
+            background_normal:''
+            color:(1,1,1,1)
+            on_press:
+                root.simpsonclearfunction() 
+        Button:
+            text:"Back"
+            size_hint:(None,None)
+            width:200
+            height:50
+            pos_hint:{"x":0.01,"y":0.05}
+            on_press:
+                app.root.current="first"
+                root.manager.transition.direction="right"
+<SimpsonWindow2>:
+    name:"simpson2"
+    FloatLayout:
+        size:root.width,root.height
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            text:"Simpson's 1/3rd Rule"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.4, 'y': 0.95} 
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:simpsonvaluelabel
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            text:"Enter the no of values : "
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.285, 'y': 0.85}
+        TextInput:
+            id:simpsonvalueinput
+            size_hint:(None,None)
+            width:40
+            height:30
+            pos_hint: {'x': 0.46, 'y': 0.845}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:simpsonvaluexlabel
+            color:(1,1,1,1)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.3, 'y': 0.75}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:simpsonresultlabel1
+            color:(39/255, 207/255, 204/255)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.15, 'y': 0.65}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:simpsonresultlabel2
+            color:(39/255, 207/255, 204/255)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.375, 'y': 0.60}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:simpsonresultlabel3
+            color:(39/255, 207/255, 204/255)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.375, 'y': 0.55}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:simpsonresultlabel4
+            color:(39/255, 207/255, 204/255)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.415, 'y': 0.50}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:simpsonresultlabel5
+            color:(39/255, 207/255, 204/255)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.415, 'y': 0.45}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:simpsonresultlabel6
+            color:(39/255, 207/255, 204/255)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.3, 'y': 0.35}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:simpsonresultlabel7
+            color:(29/255, 219/255, 95/255)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.3, 'y': 0.25}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:simpsonvaluexlabel
+            color:(1,1,1,1)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.3, 'y': 0.75}
+        TextInput:
+            id:simpsonvaluexinput
+            size_hint:(None,None)
+            background_color:(1,1,1,1)
+            background_normal:''
+            hint_text:""
+            width:40
+            height:30
+            pos_hint: {'x': 0.36, 'y': 0.745}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:simpsonvalueylabel
+            color:(1,1,1,1)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.475, 'y': 0.75}
+        TextInput:
+            id:simpsonvalueyinput
+            size_hint:(None,None)
+            background_color:(1,1,1,1)
+            background_normal:''
+            hint_text:""
+            width:40
+            height:30
+            pos_hint: {'x': 0.53, 'y': 0.745}
+        Button:
+            id:simpsonswitch2
+            text:"Function given"
+            size_hint:(None,None)
+            width:130
+            height:40
+            background_color:(30/255, 235/255, 37/255)
+            background_normal:''
+            pos_hint:{"x":0.15,"y":0.84}
+            on_press:
+                app.root.current="simpson"
+                root.manager.transition.direction="right"
+        Button:
+            id:simpsonvaluenext
+            text:"Next"
+            size_hint:(None,None)
+            width:55
+            height:40
+            background_color:(30/255, 235/255, 37/255)
+            background_normal:''
+            pos_hint:{"x":0.58,"y":0.84}
+            on_press:root.simpsonvaluenext()
+        Button:
+            id:simpson2clear
+            text:"Clear"
+            size_hint:(None,None)
+            width:55
+            height:30
+            pos_hint:{"x":0.65,"y":0.845}
+            background_color:(1,1,1,1)
+            background_normal:''
+            color:(1,1,1,1)
+            on_press:
+                root.simpsonclearfunction2()  
+        Button:
+            text:"Back"
+            size_hint:(None,None)
+            width:200
+            height:50
+            pos_hint:{"x":0.01,"y":0.05}
+            on_press:
+                app.root.current="first"
+                root.manager.transition.direction="right"
+<RKWindow>:
+    name:"rk"
+    FloatLayout:
+        size:root.width,root.height
+        id:mylayout2
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            text:"Runge Kutta 4th Order Method"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.4, 'y': 0.95}   
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:rkfunctionlabel
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            text:"dy/dx = "
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.395, 'y': 0.85}
+        TextInput:
+            id:rkfunctioninput
+            size_hint:(None,None)
+            hint_text:"Enter here"
+            width:150
+            height:30
+            pos_hint: {'x': 0.45, 'y': 0.845}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:rklabel0
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            text:"Initial conditions : "
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.29, 'y': 0.78}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:rkx0label
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            markup:True
+            text:"x[sub]0[/sub]"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.4, 'y': 0.78}
+        TextInput:
+            id:rkx0input
+            size_hint:(None,None)
+            width:50
+            height:30
+            pos_hint: {'x': 0.425, 'y': 0.775}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:rky0label
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            markup:True
+            text:"y[sub]0[/sub]"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.475, 'y': 0.78}
+        TextInput:
+            id:rky0input
+            size_hint:(None,None)
+            width:50
+            height:30
+            pos_hint: {'x': 0.5, 'y': 0.775}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:rkxlabel
+            color:(0,0,0,1)
+            background_color:(1,1,1,1)
+            text:"x at which value of y is required : "
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.29, 'y': 0.71}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:rkhlabel
+            color:(237/255, 61/255, 21/255)
+            background_color:(1,1,1,1)
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.69, 'y': 0.71}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:rklabel1
+            color:(1,1,1,1)
+            background_color:(1,1,1,1)
+            markup:True
+            text:"According to R-K 4th Order Method , y(x+ h) = y[sub]0[/sub]+ k"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.3, 'y': 0.63}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:rklabel2
+            color:(1,1,1,1)
+            background_color:(1,1,1,1)
+            markup:True
+            text:"where k = 1/6 (k[sub]1[/sub] + 2k[sub]2[/sub] + 2k[sub]3[/sub] + k[sub]4[/sub])"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.35, 'y': 0.59}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:rklabel3
+            color:(1,1,1,1)
+            background_color:(1,1,1,1)
+            markup:True
+            text:"in which k[sub]1[/sub] = hf(x[sub]0[/sub] , y[sub]0[/sub])"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.34, 'y': 0.55}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:rklabel4
+            color:(1,1,1,1)
+            background_color:(1,1,1,1)
+            markup:True
+            text:"k[sub]2[/sub] = hf(x[sub]0[/sub]+ h/2 , y[sub]0[/sub]+ k[sub]1[/sub]/2)"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.391, 'y': 0.51}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:rklabel5
+            color:(1,1,1,1)
+            background_color:(1,1,1,1)
+            markup:True
+            text:"k[sub]3[/sub] = hf(x[sub]0[/sub]+ h/2 , y[sub]0[/sub]+ k[sub]2[/sub]/2)"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.391, 'y': 0.47}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:rklabel6
+            color:(1,1,1,1)
+            background_color:(1,1,1,1)
+            markup:True
+            text:"k[sub]4[/sub] = hf(x[sub]0[/sub]+ h , y[sub]0[/sub]+ k[sub]3[/sub])"
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.391, 'y': 0.43}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:rkresultlabel1
+            color:(58/255, 235/255, 52/255)
+            background_color:(1,1,1,1)
+            markup:True
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.251, 'y': 0.30}
+        Label:
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            id:rkresultlabel2
+            color:(58/255, 235/255, 52/255)
+            background_color:(1,1,1,1)
+            markup:True
+            text:""
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'x': 0.37, 'y': 0.25}        
+        TextInput:
+            id:rkxinput
+            size_hint:(None,None)
+            width:50
+            height:30
+            pos_hint: {'x': 0.5, 'y': 0.705}
+        Button:
+            text:"Submit"
+            size_hint:(None,None)
+            width:65
+            height:30
+            background_color:(17/255, 240/255, 28/255)
+            background_normal:''
+            pos_hint:{"x":0.580,"y":0.845}
+            on_press:
+                root.rkfunction()
+        Button:
+            id:rkclear
+            text:"Clear"
+            size_hint:(None,None)
+            width:55
+            height:30
+            pos_hint:{"x":0.65,"y":0.845}
+            background_color:(1,1,1,1)
+            background_normal:''
+            color:(1,1,1,1)
+            on_press:
+                root.rkclearfunction()  
+        Button:
+            text:"Back"
+            size_hint:(None,None)
+            width:200
+            height:50
+            pos_hint:{"x":0.01,"y":0.05}
+            on_press:
+                app.root.current="first"
+                root.manager.transition.direction="right"
